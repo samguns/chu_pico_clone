@@ -12,7 +12,7 @@
 
 #define I2C_HUB_EN 19
 
-#define TOF_MUX_LIST { 1, 2, 0, 4, 5 }
+#define TOF_MUX_LIST { 0, 4, 5, 6, 7 }
 
 #define IR_GROUP_ABC_GPIO { 3, 4, 5 }
 #define IR_SIG_ADC_CHANNEL { 0, 1 }
@@ -22,7 +22,7 @@
 #define RGB_TOWER_RIGHT_PIN 1
 #define RGB_ORDER GRB // or RGB
 
-#define NKRO_KEYMAP "1aqz2swx3dec4frv5gtb6hyn7jum8ki90olp,."
+#define NKRO_KEYMAP "1aqz2swx3dec4frv5gtb6hyn7jum8ki90ABCDE"
 #else
 
 #endif

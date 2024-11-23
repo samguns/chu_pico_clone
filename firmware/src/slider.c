@@ -24,6 +24,14 @@
 static uint16_t readout[36];
 static uint16_t touch[3];
 static unsigned touch_count[36];
+static uint16_t mpr121_hardware_map[12] = {
+    (1 << 11), (1 << 10),
+    (1 << 9), (1 << 8),
+    (1 << 7), (1 << 6),
+    (1 << 4), (1 << 5),
+    (1 << 2), (1 << 3),
+    (1 << 0), (1 << 1)
+};
 
 void slider_init()
 {
@@ -71,7 +79,12 @@ bool slider_touched(unsigned key)
     if (key >= 32) {
         return 0;
     }
-    return touch[key / 12] & (1 << (key % 12));
+
+    if (key >= 24) {
+        return touch[key / 12] & mpr121_hardware_map[(key % 12) + 4];
+    }
+
+    return touch[key / 12] & mpr121_hardware_map[key % 12];
 }
 
 unsigned slider_count(unsigned key)

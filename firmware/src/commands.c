@@ -484,7 +484,7 @@ static void handle_factory_reset()
 
 static void handle_nfc()
 {
-    i2c_select(I2C_PORT, 1 << 5); // PN532 on IR1 (I2C mux chn 5)
+    i2c_select(I2C_PORT, 1 << 0); // PN532 on IR1 (I2C mux chn 5)
     printf("NFC module: %s\n", nfc_module_name());
     nfc_rf_field(true);
     nfc_card_t card = nfc_detect_card();

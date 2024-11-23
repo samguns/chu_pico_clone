@@ -35,8 +35,8 @@ static chu_cfg_t default_cfg = {
         .debounce_release = 2,
      },
     .hid = {
-        .joy = 1,
-        .nkro = 0,
+        .joy = 0,
+        .nkro = 1,
     },
     .aime = {
         .mode = 0,

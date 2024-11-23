@@ -17,6 +17,7 @@
 #include "hardware/sync.h"
 #include "hardware/structs/ioqspi.h"
 #include "hardware/structs/sio.h"
+#include "hardware/clocks.h"
 
 #include "tusb.h"
 #include "usb_descriptors.h"
@@ -164,7 +165,7 @@ static void aime_run()
         uint8_t buf[32];
         uint32_t count = tud_cdc_n_read(aime_intf, buf, sizeof(buf));
 
-        i2c_select(I2C_PORT, 1 << 5); // PN532 on IR1 (I2C mux chn 5)
+        i2c_select(I2C_PORT, 1 << 0); // PN532 on IR1 (I2C mux chn 5)
         for (int i = 0; i < count; i++) {
             aime_feed(buf[i]);
         }
@@ -222,7 +223,7 @@ void init()
     rgb_init();
 
     nfc_attach_i2c(I2C_PORT);
-    i2c_select(I2C_PORT, 1 << 5); // PN532 on IR1 (I2C mux chn 5)
+    i2c_select(I2C_PORT, 1 << 0); // PN532 on IR1 (I2C mux chn 0)
     nfc_init();
     aime_init(cdc_aime_putc);
     aime_virtual_aic(chu_cfg->aime.virtual_aic);
